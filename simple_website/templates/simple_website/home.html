@@ -1,0 +1,23 @@
+{% extends 'simple_website/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-start">
+  <ul>
+    {% for post in posts %}
+    <div>
+      <h1>{{ post.title }}</h1>
+      <br>
+      <h3>{{ post.content }}</h3>
+      <br>
+      Posted by: {{ post.user }}
+      <br>
+      On: {{ post.created|date:'M j Y H:i' }}
+      <br>
+      -------------------------------------------------------------------------------------------------------------
+    </div>
+    <br>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

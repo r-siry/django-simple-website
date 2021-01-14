@@ -1,0 +1,17 @@
+{% extends 'simple_website/base.html' %}
+{% block content %}
+
+<ul>
+<h1>My posts</h1>
+</ul>
+<br>
+{% for post in posts %}
+  <ul>
+    <h2>Title: <a href="{% url 'viewpost' post.id %}"> {{ post.title }} </a></h2>
+    Posted on: {{ post.created }}
+    <br>
+  </ul>
+  <br>
+{% endfor %}
+
+{% endblock %}

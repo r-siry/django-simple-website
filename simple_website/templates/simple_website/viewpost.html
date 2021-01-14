@@ -1,0 +1,15 @@
+{% extends 'simple_website/base.html' %}
+{% block content %}
+{{ error }}
+
+<ul>
+  <h1>{{ post.title }}</h1>
+  <h5>{{ post.content }}</h5>
+  <h6>{{ post.created }}</h6>
+  <form method="POST" action="{% url 'deletepost' post.id %}">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-dark">Delete</button>
+  </form>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'simple_website/base.html' %}
+{% block content %}
+
+<h2 style="color: red;">{{ error }}</h2>
+<ul>
+  <h1>Make a new post</h1>
+</ul>
+<ul>
+  <form method="POST">
+  {% csrf_token %}
+  <h2>Title</h2>
+  {{ form.title }}
+  <h2>Text</h2>
+  {{ form.content }}
+  <br>
+  <button class="btn btn-dark" type="submit">Save</button>
+  </form>
+</ul>
+
+{% endblock %}
