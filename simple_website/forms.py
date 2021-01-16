@@ -6,13 +6,16 @@ from django.contrib.auth.models import User
 
 
 class MakePostForm(ModelForm):
+
     class Meta:
         model = MakePost
-        fields = ('title', 'content')
+        fields = ("title", "content", "photo")
 
 class UserCreationForm(UserCreationForm):
     username = forms.CharField(required=True, label='Username', max_length=16)
-    email = forms.EmailField(required=False, label='Email')
+    email = forms.EmailField(required=False, label='Email', help_text='(Optional)')
+    password1 = forms.CharField(required=True, label='Password', widget=forms.PasswordInput())
+    password2 = forms.CharField(required=True, label='Password confirmation', widget=forms.PasswordInput())
 
     class Meta:
         model = User

@@ -9,7 +9,7 @@ from .forms import MakePostForm, UserCreationForm
 
 
 def home(request):
-    posts = MakePost.objects.order_by('-created')
+    posts = MakePost.objects.all().order_by('-created')
     return render(request, 'simple_website/home.html',{'posts':posts})
 
 
@@ -47,12 +47,13 @@ def logoutuser(request):
         return redirect('home')
 
 
+@login_required
 def newpost(request):
     if request.method == 'GET':
         return render(request, 'simple_website/newpost.html', {'form':MakePostForm()})
     else:
         try:
-            form = MakePostForm(request.POST)
+            form = MakePostForm(request.POST, request.FILES)
             newpost = form.save(commit=False)
             newpost.user = request.user
             newpost.save()
@@ -61,11 +62,13 @@ def newpost(request):
             return render(request, 'simple_website/newpost.html', {'form':MakePostForm(), 'error':'Bad data passed in'})
 
 
+@login_required
 def myposts(request):
     posts = MakePost.objects.filter(user=request.user).order_by('-created')
     return render(request, 'simple_website/myposts.html',{'posts':posts})
 
 
+@login_required
 def viewpost(request, post_pk):
     post = get_object_or_404(MakePost, pk=post_pk, user=request.user)
     if request.method == 'GET':
@@ -80,6 +83,7 @@ def viewpost(request, post_pk):
             return render(request, 'simple_website/viewpost.html', {'post':post, 'form':form, 'error': 'Bad data passed in'} )
 
 
+@login_required
 def deletepost(request, post_pk):
     post = get_object_or_404(MakePost, pk=post_pk, user=request.user)
     if request.method == 'POST':
