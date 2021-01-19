@@ -25,8 +25,7 @@ SECRET_KEY = 'c)(kchm1ao!r@h2gdq(g3oo4!pg^@kff7%m92zhq7k@ji^++-p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['r1337.pythonanywhere.com']
 
 
 # Application definition
@@ -120,14 +119,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_URL = '/login/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-try:
-    from .local_settings import *
-except ImportError:
-    print("No local file. Must be production")

@@ -7,7 +7,9 @@
     <div>
       <h1>{{ post.title }}</h1>
       <br>
-      <img src="{{ post.photo.url }}">
+      {% if post.photo %}
+        <img src="{{ post.photo.url }}">
+      {% endif %}
       <br>
       <h3>{{ post.content }}</h3>
       <br>
