@@ -5,7 +5,9 @@
 <ul>
   <h1>{{ post.title }}</h1>
   <h5>{{ post.content }}</h5>
-  <img src="{{ post.photo.url }}">
+  {% if post.photo %}
+       <img src="{{ post.photo.url }}">
+  {% endif %}
   <h6>{{ post.created }}</h6>
   <form method="POST" action="{% url 'deletepost' post.id %}" enctype="multipart/form-data">
   {% csrf_token %}

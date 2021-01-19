@@ -25,7 +25,7 @@ SECRET_KEY = 'c)(kchm1ao!r@h2gdq(g3oo4!pg^@kff7%m92zhq7k@ji^++-p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['r1337.pythonanywhere.com']
+ALLOWED_HOSTS = ['r1337.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -125,4 +125,3 @@ LOGIN_URL = '/login/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-

@@ -6,22 +6,19 @@
     {% for post in posts %}
     <div>
       <h1>{{ post.title }}</h1>
-      <br>
       {% if post.photo %}
         <img src="{{ post.photo.url }}">
       {% endif %}
-      <br>
-      <h3>{{ post.content }}</h3>
-      <br>
-      Posted by: {{ post.user }}
-      <br>
-      On: {{ post.created|date:'M j Y H:i' }}
-      <br>
-      -------------------------------------------------------------------------------------------------------------
-    </div>
-    <br>
+      {% if post.content %}
+      <textarea class="form-control" type=text id="exampleFormControlTextarea1" rows="7" style="box-shadow: none; resize: none;" readonly box-shadow: none>{{ post.content }}</textarea>
+      {% endif %}
+      <div>
+        <small>Posted by: {{ post.user }}</small>
+        <br>
+        <small>On: {{ post.created|date:'M j Y H:i' }}</small>
+      </div>
+      <hr style="height:2.5px;border-width:0;color:gray;background-color:gray">
     {% endfor %}
   </ul>
 </div>
-
 {% endblock %}
