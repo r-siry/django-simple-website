@@ -2,17 +2,22 @@
 {% block content %}
 {{ error }}
 
-<ul>
-  <h1>{{ post.title }}</h1>
-  <h5>{{ post.content }}</h5>
-  {% if post.photo %}
-       <img src="{{ post.photo.url }}">
-  {% endif %}
-  <h6>{{ post.created }}</h6>
-  <form method="POST" action="{% url 'deletepost' post.id %}" enctype="multipart/form-data">
-  {% csrf_token %}
-  <button type="submit" class="btn btn-dark">Delete</button>
-  </form>
-</ul>
-
+<div class="d-flex justify-content-start">
+  <ul>
+    <div>
+    <h1>{{ post.title }}</h1>
+      {% if post.photo %}
+        <img src="{{ post.photo.url }}">
+      {% endif %}
+      {% if post.content %}
+        <textarea class="form-control" type=text id="exampleFormControlTextarea1" rows="8" style="box-shadow: none; resize: none; min-width: 300%" readonly box-shadow: none>{{ post.content }}</textarea>
+      {% endif %}
+    <h6>{{ post.created }}</h6>
+    </div>
+    <form method="POST" action="{% url 'deletepost' post.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-dark">Delete</button>
+    </form>
+  </ul>
+</div>
 {% endblock %}

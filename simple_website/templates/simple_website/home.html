@@ -4,20 +4,21 @@
 <div class="d-flex justify-content-start">
   <ul>
     {% for post in posts %}
-    <div>
+    <div >
       <h1>{{ post.title }}</h1>
-      {% if post.photo %}
+      {% if post.photo and post.content %}
+        <img src="{{ post.photo.url }}"><textarea class="form-control" type=text id="exampleFormControlTextarea1" rows="8" style="box-shadow: none; resize: none; min-width: 300%" readonly box-shadow: none>{{ post.content }}</textarea>
+      {% elif post.photo %}
         <img src="{{ post.photo.url }}">
+      {% elif post.content %}
+        <textarea class="form-control" type=text id="exampleFormControlTextarea1" rows="8" style="box-shadow: none; resize: none; min-width: 300%" readonly box-shadow: none>{{ post.content }}</textarea>
       {% endif %}
-      {% if post.content %}
-      <textarea class="form-control" type=text id="exampleFormControlTextarea1" rows="7" style="box-shadow: none; resize: none;" readonly box-shadow: none>{{ post.content }}</textarea>
-      {% endif %}
-      <div>
+    <div>
         <small>Posted by: {{ post.user }}</small>
         <br>
         <small>On: {{ post.created|date:'M j Y H:i' }}</small>
       </div>
-      <hr style="height:2.5px;border-width:0;color:gray;background-color:gray">
+      <hr style="height:2.5px;border-width:0;color:gray;background-color:gray" width="300%">
     {% endfor %}
   </ul>
 </div>
